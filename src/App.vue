@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Ciekawe cytaty znanych filozofów</h1>
-    <quote-details :quote='selectedQuote'></quote-details>
+    <quote-details id="details" :quote='selectedQuote'></quote-details>
     <ul>
       <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote>
     </ul>
@@ -40,12 +40,19 @@ export default {
 
 <style>
 #app {
+  display: grid;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#details {
+  background-color: wheat;
+  border: 1px solid green;
+  max-width: 30%;
 }
 
 ul {
@@ -55,7 +62,8 @@ ul {
 }
 
 li {
-  padding: 10px;
+  padding: 20px;
+  margin: 10px 10px;
 }
 
 

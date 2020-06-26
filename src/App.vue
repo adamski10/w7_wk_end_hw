@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <h1>Ciekawe cytaty znanych filozofów</h1>
+    <h1><intro/></h1>
+    <options/>
     <quote-details id="details" :quote='selectedQuote'></quote-details>
     <ul>
       <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote>
@@ -10,8 +11,10 @@
 </template>
 
 <script>
-import quote from './components/quote'
-import quoteDetails from './components/quoteDetails'
+import Intro from './components/Intro'
+import Quote from './components/Quote'
+import Options from './components/Options'
+import QuoteDetails from './components/QuoteDetails'
 import {eventBus} from './main.js'
 
 export default {
@@ -22,18 +25,27 @@ export default {
       selectedQuote: null
     };
   },
-  mounted(){
-    fetch('http://philosophy-quotes-api.glitch.me/quotes')
+  methods:{
+    quoteGetter: fetch('http://philosophy-quotes-api.glitch.me/quotes')
     .then(res => res.json())
     .then(quotes => this.quotes = quotes)
+  },
+  mounted(){
+    
     
     eventBus.$on('quote-selected', (quote) => {
       this.selectedQuote = quote
+    }),
+
+    eventBus.$on('options', (options) => {
+
     })
   },
   components: {
-    'quote': quote,
-    'quote-details': quoteDetails
+    'quote': Quote,
+    'quote-details': QuoteDetails,
+    'intro': Intro,
+    'options': Options
   }
 }
 </script>

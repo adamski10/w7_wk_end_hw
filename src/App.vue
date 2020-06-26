@@ -4,7 +4,7 @@
     <options/>
     <quote-details id="details" :quote='selectedQuote'></quote-details>
     <ul>
-      <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote>
+      <!-- <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote> -->
     </ul>
     
   </div>
@@ -25,14 +25,14 @@ export default {
       selectedQuote: null
     };
   },
-  methods:{
-    quoteGetter: fetch('http://philosophy-quotes-api.glitch.me/quotes')
-    .then(res => res.json())
-    .then(quotes => this.quotes = quotes)
-  },
+  
   mounted(){
+    fetch('http://philosophy-quotes-api.glitch.me/quotes')
+    .then(res => res.json())
+    .then(quotes => this.quotes = quotes),
     
-    
+    intro,
+
     eventBus.$on('quote-selected', (quote) => {
       this.selectedQuote = quote
     }),

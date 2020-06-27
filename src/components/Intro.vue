@@ -1,18 +1,26 @@
 <template>
   <body>
-   <h1 v-on:click="goToOptions"><i>Quotes worth knowing </i></h1>
+   <h1><i>Quotes worth knowing </i></h1>
   </body>
 </template>
 
 <script>
+import Options from './Options';
+
+
 export default {
   name: 'intro',
 
-  mounted(){
-    goToOptions = eventBus.$on
-  }
-}
+  
+  methods: {
+      
+  },
 
+  components: {
+    'options': Options
+  }
+
+}
 </script>
 
 <style scoped>

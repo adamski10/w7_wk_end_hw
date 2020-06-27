@@ -1,6 +1,13 @@
 <template>
- 
-    <li v-on:click='handleClick'>{{ quote.quote }}</li>
+ <div>
+    <div id="quote">
+      <p>{{ quote.quote }}</p>
+    </div>
+    <div id="author">
+      <p>{{ quote.author}}</p>
+    </div>
+ </div>
+
     
   
 </template>

@@ -1,20 +1,25 @@
 <template>
   <div class="options">
     <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
-    <p>Favourites</p>
+    <p>Categories</p>
+    <p>Authors</p>
+    <p v-on:click="handleClick()">Inspire me</p>
+    <p >Stoicism</p>
+    <p>Mystycism</p>
+    <p>Existentialism</p>
+    <p>Uplifiting</p>
   </div>
 </template>
 
 <script>
+import { eventBus } from '../main'
 export default {
-  name: 'options'
+  name: 'options',
+  methods: {
+    handleClick(category) {
+      eventBus.$emit('category-selected', )
+    }
+  }
 
 }
 </script>

@@ -30,8 +30,7 @@ export default {
     fetch('http://philosophy-quotes-api.glitch.me/quotes')
     .then(res => res.json())
     .then(quotes => this.quotes = quotes),
-    
-    intro,
+  
 
     eventBus.$on('quote-selected', (quote) => {
       this.selectedQuote = quote

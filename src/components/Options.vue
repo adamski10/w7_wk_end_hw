@@ -17,7 +17,7 @@ export default {
   name: 'options',
   methods: {
     handleClick(category) {
-      eventBus.$emit('category-selected', )
+      eventBus.$emit('category-selected', category)
     }
   }
 

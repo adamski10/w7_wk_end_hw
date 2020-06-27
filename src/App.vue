@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1><intro/></h1>
+    
     <options/>
     <quote-details id="details" :quote='selectedQuote'></quote-details>
     <ul>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Intro from './components/Intro'
+
 import Quote from './components/Quote'
 import Options from './components/Options'
 import QuoteDetails from './components/QuoteDetails'
@@ -22,7 +22,8 @@ export default {
   data(){
     return {
       quotes: [],
-      selectedQuote: null
+      selectedQuote: null,
+      selectedCategory: null
     };
   },
   
@@ -43,7 +44,6 @@ export default {
   components: {
     'quote': Quote,
     'quote-details': QuoteDetails,
-    'intro': Intro,
     'options': Options
   }
 }

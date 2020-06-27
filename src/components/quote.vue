@@ -6,6 +6,7 @@
     <div id="author">
       <p>{{ quote.source}}</p>
     </div>
+    <button v-on:click="back">Take me back</button>
  </div>
 
 </template>
@@ -17,7 +18,9 @@
     props: ['quote'],
 
     methods: {
-      
+      back(){
+        window.location.reload()
+      }
     }
    
    
@@ -25,9 +28,7 @@
   
 </script>
 
-<style>
-  li {
-    list-style: none;
-  }
+<style scoped>
+  
   
 </style>

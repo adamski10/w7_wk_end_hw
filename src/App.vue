@@ -2,7 +2,9 @@
   <div id="app">
     
     <options v-if='!selectedQuote' ></options>
-    <quote id="details" :quote='selectedQuote'></quote>
+    <div id="quote">
+      <quote id="details" :quote='selectedQuote'></quote>
+    </div>
     <ul>
       <!-- <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote> -->
     </ul>
@@ -59,10 +61,16 @@ export default {
   margin-top: 60px;
 }
 
+#quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #details {
-  background-color: wheat;
-  border: 1px solid green;
-  max-width: 30%;
+  background-color: rgb(201, 246, 212);
+  border: 1px dimgrey;
+  
 }
 
 ul {

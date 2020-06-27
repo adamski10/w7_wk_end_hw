@@ -7,6 +7,7 @@
 
 <script>
 import Quote from './Quote'
+import Quotes from '../App'
 
 export default {
   name: 'QuotesList',

@@ -13,12 +13,17 @@
 
 <script>
 import { eventBus } from '../main'
+import Quotes from '../App'
 export default {
   name: 'options',
+  props: ['quote'],
   methods: {
-    handleClick(category) {
-      eventBus.$emit('category-selected', category)
+    handleClick() {
+      
+      eventBus.$emit('category-selected', this.quote)
+      
     }
+   
   }
 
 }

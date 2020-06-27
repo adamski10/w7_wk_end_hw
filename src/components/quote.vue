@@ -1,7 +1,7 @@
 <template>
- <div>
+ <div v-if='quote !== null'>
     <div id="quote">
-      <p>{{ quote.quote }}</p>
+      <p><i>"{{ quote.quote }}"</i></p>
     </div>
     <div id="author">
       <p>{{ quote.source}}</p>
@@ -11,8 +11,7 @@
 </template>
 
 <script>
-  import {eventBus} from '../main.js'
-
+  
   export default {
     name: 'quote',
     props: ['quote'],

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     
-    <options/>
-    <quote-details id="details" :quote='selectedQuote'></quote-details>
+    <options v-if='!selectedQuote' ></options>
+    <quote id="details" :quote='selectedQuote'></quote>
     <ul>
       <!-- <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote> -->
     </ul>
@@ -14,7 +14,6 @@
 
 import Quote from './components/Quote'
 import Options from './components/Options'
-import QuoteDetails from './components/QuoteDetails'
 import {eventBus} from './main.js'
 
 export default {
@@ -33,8 +32,9 @@ export default {
     .then(quotes => this.quotes = quotes),
   
 
-    eventBus.$on('quote-selected', (quote) => {
-      this.selectedQuote = quote
+    eventBus.$on('category-selected', (quote) => {
+      this.selectedQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)]
+       
     }),
 
     eventBus.$on('options', (options) => {
@@ -42,9 +42,8 @@ export default {
     })
   },
   components: {
-    'quote': Quote,
-    'quote-details': QuoteDetails,
-    'options': Options
+    'options': Options,
+    'quote': Quote
   }
 }
 </script>

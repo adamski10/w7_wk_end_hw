@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     
-    <options v-if='!selectedQuote' ></options>
+    <options v-if='!selectedQuote && !selectedCategory' ></options>
     <div id="quote">
       <quote id="details" :quote='selectedQuote'></quote>
     </div>
+    <QuotesList :quotes='selectedCategory'></QuotesList>
     <ul>
       <!-- <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote> -->
     </ul>
@@ -13,7 +14,7 @@
 </template>
 
 <script>
-
+import QuotesList from './components/QuotesList'
 import Quote from './components/Quote'
 import Options from './components/Options'
 import {eventBus} from './main.js'
@@ -34,22 +35,57 @@ export default {
     .then(quotes => this.quotes = quotes),
   
 
-    eventBus.$on('category-selected', (quote) => {
+    eventBus.$on('inspire-me', () => {
       this.selectedQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)]
-       
     }),
 
-    eventBus.$on('options', (options) => {
+    eventBus.$on('stoicism', () => {
+      function stoicism(quote){
+        return quote.philosophy === "Stoicism"
+      }
+      this.selectedCategory = this.quotes.filter(stoicism)
+      console.log(this.selectedCategory)
+    }),
 
+    eventBus.$on('mysticism', () => {
+      function mysticism(quote){
+        return quote.philosophy === "Mysticism"
+      }
+      this.selectedCategory = this.quotes.filter(mysticism)
+      console.log(this.selectedCategory)
+    }),
+
+    eventBus.$on('existentialism', () => {
+      function existentialism(quote){
+        return quote.philosophy === "Existentialism"
+      }
+      this.selectedCategory = this.quotes.filter(existentialism)
+      console.log(this.selectedCategory)
     })
+
   },
+
   components: {
     'options': Options,
-    'quote': Quote
+    'quote': Quote,
+    'QuotesList': QuotesList
   }
+  
 }
-</script>
+  
+  
 
+</script>
+// const getEvens = function (numbers) {
+  // return numbers.filter((number) => {
+  //   return number % 2 === 0
+  // })
+  // methods: {
+//     removeFavorite(name) {
+//       let beer = this.favouriteBeers.find(beer => beer.name == name);
+//        this.favouriteBeers.splice(this.favouriteBeers.indexOf(beer), 1);
+//     }
+//   }
 <style>
 #app {
   display: grid;

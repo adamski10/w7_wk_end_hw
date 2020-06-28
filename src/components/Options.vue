@@ -3,10 +3,10 @@
     <p>Favourites</p>
     <p>Categories</p>
     <p>Authors</p>
-    <p v-on:click="handleClick()">Inspire me</p>
-    <p >Stoicism</p>
-    <p>Mystycism</p>
-    <p>Existentialism</p>
+    <p v-on:click="inspireMeClick()">Inspire me</p>
+    <p v-on:click="stoicismClick()">Stoicism</p>
+    <p v-on:click="mysticismClick()">Mystycism</p>
+    <p v-on:click="existentialismClick()">Existentialism</p>
     <p>Uplifiting</p>
   </div>
 </template>
@@ -18,10 +18,17 @@ export default {
   name: 'options',
   props: ['quote'],
   methods: {
-    handleClick() {
-      
-      eventBus.$emit('category-selected', this.quote)
-      
+    inspireMeClick() {
+      eventBus.$emit('inspire-me')
+    },
+    stoicismClick(){
+      eventBus.$emit('stoicism')
+    },
+    mysticismClick(){
+      eventBus.$emit('mysticism')
+    },
+    existentialismClick(){
+      eventBus.$emit('existentialism')
     }
    
   }

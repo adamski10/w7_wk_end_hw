@@ -2,13 +2,11 @@
   <div id="app">
     
     <options v-if='!selectedQuote && !selectedCategory' ></options>
-    <div id="quote">
-      <quote id="details" :quote='selectedQuote'></quote>
-    </div>
+    
+    <quote :quote='selectedQuote'></quote>
+    
     <QuotesList :quotes='selectedCategory'></QuotesList>
-    <ul>
-      <!-- <quote v-for='(quote, index) in quotes' :key='index' :quote='quote'></quote> -->
-    </ul>
+    
     
   </div>
 </template>
@@ -76,16 +74,7 @@ export default {
   
 
 </script>
-// const getEvens = function (numbers) {
-  // return numbers.filter((number) => {
-  //   return number % 2 === 0
-  // })
-  // methods: {
-//     removeFavorite(name) {
-//       let beer = this.favouriteBeers.find(beer => beer.name == name);
-//        this.favouriteBeers.splice(this.favouriteBeers.indexOf(beer), 1);
-//     }
-//   }
+
 <style>
 #app {
   display: grid;
@@ -97,17 +86,6 @@ export default {
   margin-top: 60px;
 }
 
-#quote {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#details {
-  background-color: rgb(201, 246, 212);
-  border: 1px dimgrey;
-  
-}
 
 ul {
   display: flex;

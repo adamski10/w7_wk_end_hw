@@ -6,7 +6,7 @@
     <div id="author">
       <p>{{ quote.source}}</p>
     </div>
-    <button v-on:click="back">Take me back</button>
+    
  </div>
 
 </template>
@@ -15,15 +15,7 @@
   
   export default {
     name: 'quote',
-    props: ['quote'],
-
-    methods: {
-      back(){
-        window.location.reload()
-      }
-    }
-   
-   
+    props: ['quote']
   }
   
 </script>

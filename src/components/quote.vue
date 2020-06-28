@@ -6,16 +6,22 @@
     <div id="author">
       <p>{{ quote.source}}</p>
     </div>
+    <button v-on:click="addToFavourites">Add to Fav List</button> 
     
  </div>
 
 </template>
 
 <script>
-  
+  import {eventBus} from '../main.js'
   export default {
     name: 'quote',
-    props: ['quote']
+    props: ['quote'],
+    methods:{
+      addToFavourites() {
+        eventBus.$emit('favourite-quote', this.quote)
+      }
+    }
   }
   
 </script>

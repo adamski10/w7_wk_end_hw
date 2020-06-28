@@ -1,11 +1,14 @@
 <template>
   <div id="app">
+    <h1 id="title">Quotes worth reading...</h1>
     
     <options v-if='!selectedQuote && !selectedCategory' ></options>
     
     <quote :quote='selectedQuote'></quote>
     
     <QuotesList :quotes='selectedCategory'></QuotesList>
+
+    <fav-list/>
     
     
   </div>
@@ -13,6 +16,7 @@
 
 <script>
 import QuotesList from './components/QuotesList'
+import FavouritesList from './components/FavouritesList'
 import Quote from './components/Quote'
 import Options from './components/Options'
 import {eventBus} from './main.js'
@@ -23,7 +27,8 @@ export default {
     return {
       quotes: [],
       selectedQuote: null,
-      selectedCategory: null
+      selectedCategory: null,
+      favourites: []
     };
   },
   
@@ -42,7 +47,7 @@ export default {
         return quote.philosophy === "Stoicism"
       }
       this.selectedCategory = this.quotes.filter(stoicism)
-      console.log(this.selectedCategory)
+      
     }),
 
     eventBus.$on('mysticism', () => {
@@ -66,7 +71,8 @@ export default {
   components: {
     'options': Options,
     'quote': Quote,
-    'QuotesList': QuotesList
+    'QuotesList': QuotesList,
+    'fav-list': FavouritesList
   }
   
 }
@@ -76,27 +82,31 @@ export default {
 </script>
 
 <style>
-#app {
-  display: grid;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    display: grid;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+    background-color: rgb(233, 230, 230);
+  }
 
+  #title {
+    background-color: rgb(233, 230, 230);
+  }
 
-ul {
-  display: flex;
-  flex-direction: column-reverse;
-  padding: 10px;
-}
+  ul {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px;
+  }
 
-li {
-  padding: 20px;
-  margin: 10px 10px;
-}
+  li {
+    padding: 20px;
+    margin: 10px 10px;
+  }
 
 
 </style>
